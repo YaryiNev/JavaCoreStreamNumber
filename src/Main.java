@@ -1,19 +1,26 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<Integer> intList = Arrays.asList(1, 2, 5, 16, -1, -2, 0, 32, 3, 5, 8, 23, 4);
-        intList.stream()
-                .filter(x -> x > 0)
-                .filter(x -> x % 2 == 0)
-                .sorted(Comparator.naturalOrder())
-                .collect(Collectors.toList())
-                .forEach(System.out::println);
+        Integer[] numbers = {1, 2, 5, 16, -1, -2, 0, 32, 3, 5, 8, 23, 4};
+        List<Integer> numbersList = Arrays.asList(numbers);
+
+        List<Integer> positiveNumbersList = new ArrayList<>();
+        for (Integer number : numbersList) {
+            if (number > 0) positiveNumbersList.add(number);
+        }
+
+        List<Integer> positiveEvenNumbersList = new ArrayList<>();
+        for (Integer number : positiveNumbersList) {
+            if (number % 2 == 0) positiveEvenNumbersList.add(number);
+        }
+
+        Collections.sort(positiveEvenNumbersList);
+        for (Integer number : positiveEvenNumbersList) {
+            System.out.println(number);
+        }
     }
 }
